@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<head>
+<script src="/assets/jquery.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet"> 
+<style>
+
+body {
+  font-family: font-family: 'Anton', sans-serif;
+  margin: 0 auto;
+  max-width: 900px;
+  background: rgba(225,90,90,.20);
+}
+div {
+  height: 400px;
+  background-size: 50%;
+  position: relative;
+  right: 20px
+  margin: 70 0 0 0;
+  border-radius: 100px;
+  width: 800px
+}
+h1 {
+  font-family: 'Shadows Into Light', cursive;
+  text-align: center;
+  font-size: 95px;
+  color: rgba(100,0,100);
+  margin: 30px 0 0 0;
+  opacity: .6;
+}
+h2 {
+  text-align: center;
+  color: rgba(100,00,90);
+  margin: 0px 0 70px 0;
+  font-family: 'Shadows Into Light', cursive;
+}
+p {
+  color: rgba(255,255,255,1);
+  background: black;
+  background: linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));
+  background: -webkit-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));
+  background: -moz-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));
+  padding: 10px;
+  line-height: 28px;
+  text-align: justify;
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  height: 30px;
+  transition: height .5s;
+  -webkit-transition: height .5s;
+  -moz-transition: height .5s;
+  font-family: 'Shadows Into Light', cursive;
+}
+
+small {
+  opacity: 0;
+}
+
+    ul {
+      padding: 50px;
+      background: rgba(0,0,0);
+      text-align: center;
+    }
+    li {
+      display: inline;
+      padding: 0px 10px 0px 10px;
+    }
+.show-description p {
+  height: 150px;
+}
+
+.show-description small {
+  opacity: 1;
+  color: rgba(90,90,90,1);
+}
+
+
+.price {
+  float: right;
+}
+@media (max-width: 500px) {
+  h1 {
+    font-size: 50px;
+    margin-top: 20px;
+    line-height: 40px;
+    
+  }
+  h2 {
+    font-size: 20px;
+    margin: 20px 0 30px 0;
+  }
+  div {
+    margin: 20px 12px 0 12px;
+  }
+  p {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  small {
+    font-size: 16px;
+  }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<ul>
+      <li><button onclick=Whatiscoffee()>What Is Coffee?</button></li>
+      <li><button onclick=Coffeeoftheweek()>Coffee of the Week</button></li>
+      <li><button onclick=Signupfordailylettershere()>Sign Up for Daily Letters Here!</button></li>
+    </ul>
+
+<h1>The Coffeed Shop</h1>
+<h2>"Live Life In Coffee Years!"</h2>
+
+<div id="warm"></div>
+
+<script>
+CoffeeImages = [
+        'url("https://www.nestleprofessional.us/sites/g/files/gfb131/f/styles/recipe/public/media/instant-iced-coffee-nestle-professional-food-service-430x320.jpg?itok=lKyuuT8Y")',
+        'url("https://www.nespresso.com/ncp/res/uploads/recipes/90940b07a62626d3938755c844f13bf438da83f2.jpg")',
+        'url("https://upload.wikimedia.org/wikipedia/commons/3/35/Latte_at_Doppio_Ristretto_Chiang_Mai_01_%28cropped%29.jpg")',
+  ]
+  
+  WeekImages = [
+    'url("https://cdn.cpnscdn.com/static.coupons.com/ext/kitchme/images/recipes/800x1200/starbucks-caramel-frappuccino-copycat_45621.jpg")',
+    'url("https://globalassets.starbucks.com/assets/0517344e9b7e4062be7d4b8fc96c1328.jpg")',
+    'url("https://globalassets.starbucks.com/assets/1ad883b53a2e469580757e4a1c9d7e44.jpg")',
+  ]
+  
+  SignImages = [
+    'url("https://www.vector-eps.com/wp-content/gallery/coffee-letters-backgrounds/coffee-letters-background2.jpg")',
+    'url("https://img.ltwebstatic.com/images2_pi/2018/07/31/15330285492178539006.jpg")',
+    'url("https://www.winnetkacommunityhouse.org/wp-content/uploads/2011/07/sign-up-today.png")',
+  ]
+  
+  CoffeeDivs = [
+    '<div class="item"><p>The Classic: Iced Coffee <span class="price">S:$2.10 M:$2.75 L:$3.00 </span><br /><small>Our Iced Coffee is made from dark roasted coffee beans that are grinded with love, brewed, and then poured over ice. This is a customer favorite everywhere!</small></p></div>',
+    '<div class="item"><p>The Calm Drink: Macchiato <span class="price">S:$3.50 M:4.10 L:5.15</span><br /><small>The Macchiato is described as a calm drink due to its shot of espresso subdued by a dash of milk. We carry many flavors such as caramel, coconut, hazelnut, and mocha.</small></p></div>',
+    '<div class="item"><p>The Classy Drink: Latte <span class="price">S:$3.10 M:$3.75 L:$4.00</span><br />small>The Latte has always been a classic drink for many years. We make our lattes with love, ensuring that very element of it is perfect. We use espresso and mix it with a dash of steamed milk. </small></p></div>',
+  ]
+  
+  WeekDivs = [
+        '<div class="item"><p>Iced Coffee of the Week <span class="price">S:$2.10 M:$2.75 L:$3.00 </span><br /><small>Our Iced Coffee is made from dark roasted coffee beans that are grinded with love, brewed, and then poured over ice. This is a customer favorite everywhere!</small></p></div>',
+    '<div class="item"><p>Spiced Chai of the Week <span class="price">S:$3.50 M:4.10 L:5.15</span><br /><small>The Spiced Chai is described as a sweet yet gingery drink due to its slight use of ginger and nutmeg. This is not necessarily considered a coffee but its still very addictive!.</small></p></div>',
+    '<div class="item"><p>Flat White of the Week <span class="price">S:$3.10 M:$3.75 L:$4.00</span><br />small>The flat white has always been a classic drink for many years. We make our lattes with love, ensuring that very element of it is perfect. We use espresso and mix it with a dash of steamed milk. </small></p></div>',
+  ]
+  
+  SignDivs = [
+        '<div class="item"><p>Mini Coffee Love <span class="price">Membership: $7.99 per month</span><br /><small>This membership includes coffee posters, samples of 2 coffee types per month and your very own The Coffee Shop card!</small></p></div>',
+    '<div class="item"><p>Little More Coffee Love <span class="price"> $10 per month</span><br /><small>This membership includes all the perks in the first membership offered plus the additional $5 loaded onto your coffee card when you purchase 2 or more of the featured coffees.</small></p></div>',
+    '<div class="item"><p>All the Coffee Love <span class="price">$15 per month </span><br />small>This membership includes all the perks of the two memberships offered above plus the additional VIP status when you oder our featured coffees. You will also recieve our signature Coffee Mug. </small></p></div>',
+  ]
+    
+  $('div').on('click', function() {
+      $(this).toggleClass('show-description');
+  });
+  
+  function Whatiscoffee() {
+    cold = document.getElementById("warm")
+    cold.innerHTML = ""
+    cold.innerHTML +=CoffeeDivs[0]
+    cold.innerHTML +=CoffeeDivs[1]
+    cold.innerHTML +=CoffeeDivs[2]
+    
+    //alert("Whatiscofffee")
+    items = document.getElementsByClassName("item")
+	  for (i=0; i<3; i=i+1) {
+		  items[i].style.background = CoffeeImages[i]
+		  items[i].style.backgroundSize = '100% 100%'
+    }  
+  } 
+  
+  function Coffeeoftheweek() {
+    cold = document.getElementById("warm")
+    cold.innerHTML = ""
+    cold.innerHTML +=WeekDivs[0]
+    cold.innerHTML +=WeekDivs[1]
+    cold.innerHTML +=WeekDivs[2]
+    
+    //alert("Coffeeoftheweek")
+    items = document.getElementsByClassName("item")
+	  for (i=0; i<3; i=i+1) {
+		  items[i].style.background = WeekImages[i]
+		  items[i].style.backgroundSize = '90% 120%'
+    }   
+  }
+  
+  function Signupfordailylettershere() {
+    cold = document.getElementById("warm")
+    cold.innerHTML = ""
+    cold.innerHTML +=SignDivs[0]
+    cold.innerHTML +=SignDivs[1]
+    cold.innerHTML +=SignDivs[2]
+    
+    //alert("Signupfordailylettershere") 
+    items = document.getElementsByClassName("item")
+	  for (i=0; i<3; i=i+1) {
+		  items[i].style.background = SignImages[i]
+		  items[i].style.backgroundSize = '90% 120%'
+    }  
+  }
+
+
+</script>
+
+</body>
